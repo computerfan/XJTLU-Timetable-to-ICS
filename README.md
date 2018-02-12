@@ -1,9 +1,9 @@
-#XJTLU-Timetable-to-ICS
+# XJTLU-Timetable-to-ICS
 
 A simple command-line tool for exporting timetable from 
 XJTLU e-bridge to a iCalendar file.
 
-###CLI
+### CLI
     npm install -g xjtlu-timetable-to-ics
 
 ```
@@ -33,7 +33,7 @@ $ xjtlu-timetable-to-ics -h
     $ xjtlu-timetable-to-ics username -p pwd -a -15 -o ./xjtlu.ics
 ```
 
-###As a Module
+### As a Module
     npm install xjtlu-timetable-to-ics
 ```javascript
 const xjtluIcs = require('xjtlu-timetable-to-ics');

@@ -1,8 +1,10 @@
+'use strict';
+
 module.exports = function (configs, callback) {
     process.env.SUPPRESS_NO_CONFIG_WARNING = 'y';
-    const config = require('config');
-    const timetableToIcs = require('./lib');
-    let defaultConfigs = {
+    var config = require('config');
+    var timetableToIcs = require('./lib');
+    var defaultConfigs = {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
         },
@@ -14,7 +16,7 @@ module.exports = function (configs, callback) {
     config.util.extendDeep(defaultConfigs, configs);
     config.util.setModuleDefaults('xjtlu-timetable-to-ics', defaultConfigs);
     //console.log(config);
-    timetableToIcs(data => {
+    timetableToIcs(function (data) {
         callback(data);
     });
 };

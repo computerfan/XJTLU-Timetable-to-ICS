@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-const program = require('commander');
-const fs = require('fs');
-const path = require('path');
-const version = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')) + '').version;
-const timetableToIcs = require('../');
-let config = {};
-program
-    .version(version)
-    .description('A simple command-line tool for exporting timetable from XJTLU e-bridge to a iCalendar file.')
+'use strict';
+
+var program = require('commander');
+var fs = require('fs');
+var path = require('path');
+var version = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')) + '').version;
+var timetableToIcs = require('../');
+var config = {};
+program.version(version).description('A simple command-line tool for exporting timetable from XJTLU e-bridge to a iCalendar file.')
     .option('-p, --password <password>', 'specify password')
     .option('-y, --year <year>', 'specify the first year in the timetable', 2018)
     .option('-m, --month <month>', 'specify the first month in the timetable', 2)
@@ -15,11 +15,11 @@ program
     .option('-o, --output-file <path>', 'write the iCal to a file')
     .option('-a, --alarm <minute>', 'alert time relative to the start time of each event')
     .arguments('<username>')
-    .action(username => {
+    .action(function (username) {
         config.username = username;
     });
 
-program.on('--help', () => {
+program.on('--help', function () {
     console.log('');
     console.log('  Examples:');
     console.log('');
@@ -47,41 +47,38 @@ if (!process.argv.slice(2).length) {
     config.password = program.password;
     main(config);
 } else {
-    let readline = require('readline');
+    var readline = require('readline');
 
-    let rl = readline.createInterface({
+    var rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
     });
 
     rl.stdoutMuted = true;
 
-    rl.question('Password: ', password => {
+    rl.question('Password: ', function (password) {
         config.password = password;
         rl.close();
-        main(config)
+        console.log('');
+        main(config);
     });
 
     rl._writeToOutput = function _writeToOutput(stringToWrite) {
-        if (rl.stdoutMuted)
-            rl.output.write("*");
-        else
-            rl.output.write(stringToWrite);
+        if (rl.stdoutMuted) rl.output.write("*"); else rl.output.write(stringToWrite);
     };
 }
 
 function main(config) {
-    timetableToIcs(config, data => {
+    timetableToIcs(config, function (data) {
         //console.log(a);
         if (program.outputFile) {
-            fs.writeFile(config.outputFile, data, err => {
+            fs.writeFile(config.outputFile, data, function (err) {
                 if (err) {
                     return console.error(err);
                 }
                 console.log("The file was saved!");
             });
-        }
-        else {
+        } else {
             console.log(data);
         }
     });

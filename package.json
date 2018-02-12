@@ -5,7 +5,6 @@
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.14.1",
     "config": "^1.29.4",
-    "ics": "^2.1.1",
     "ics-js": "^0.10.2",
     "moment": "^2.20.1",
     "request": "^2.83.0"
@@ -15,7 +14,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/computerfan/XJTLU-Timetable-to-ICS"
+    "url": "https://github.com/computerfan/XJTLU-Timetable-to-ICS.git"
   },
   "keywords": [
     "xjtlu",
@@ -24,12 +23,15 @@
   "bin": {
     "xjtlu-timetable-to-ics": "./bin/xjtlu-timetable-to-ics.js"
   },
-  "author": "Computerfan <dinanaomi97@gmail.com>",
+  "author": "Computerfan <dinanaomi97@gmail.com> (https://cfan.space/)",
   "license": "MIT",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/computerfan/XJTLU-Timetable-to-ICS/issues"
   }
 }

@@ -17,9 +17,7 @@ program
     .arguments('<username>')
     .action(username => {
         config.username = username;
-    })
-    //.option('-c, --config', 'Add the specified type of cheese [marble]', 'marble')
-    .parse(process.argv);
+    });
 
 program.on('--help', () => {
     console.log('');
@@ -31,6 +29,14 @@ program.on('--help', () => {
     console.log('    $ xjtlu-timetable-to-ics username -p pwd -a -15 -o ./xjtlu.ics');
     console.log('');
 });
+
+program.parse(process.argv);
+
+if (program.year) config.year = program.year;
+if (program.month) config.month = program.month;
+if (program.day) config.day = program.day;
+if (program.outputFile) config.outputFile = program.outputFile;
+if (program.alarm) config.alarm = program.alarm;
 
 if (!process.argv.slice(2).length) {
     program.help();
@@ -63,14 +69,6 @@ if (!process.argv.slice(2).length) {
             rl.output.write(stringToWrite);
     };
 }
-if (program.year) config.year = program.year;
-if (program.month) config.month = program.month;
-if (program.day) config.day = program.day;
-if (program.outputFile) config.outputFile = program.outputFile;
-if (program.alarm) config.alarmTime = program.alarm;
-
-
-console.log(config);
 
 function main(config) {
     timetableToIcs(config, data => {

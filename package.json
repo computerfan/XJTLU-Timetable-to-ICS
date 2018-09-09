@@ -3,11 +3,11 @@
   "version": "0.0.2",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "commander": "^2.14.1",
-    "config": "^1.29.4",
+    "commander": "^2.18.0",
+    "config": "^1.31.0",
     "ics-js": "^0.10.2",
-    "moment": "^2.20.1",
-    "request": "^2.83.0"
+    "moment": "^2.22.2",
+    "request": "^2.88.0"
   },
   "description": "A simple command-line tool for exporting timetable from XJTLU e-bridge to a iCalendar file.",
   "main": "index.js",

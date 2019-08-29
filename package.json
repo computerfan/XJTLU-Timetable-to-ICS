@@ -1,6 +1,6 @@
 {
   "name": "xjtlu-timetable-to-ics",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.18.0",

@@ -10,8 +10,8 @@ module.exports = function (configs, callback) {
         },
         baseUrl: 'https://ebridge.xjtlu.edu.cn/urd/sits.urd/run',
         year: 2019,
-        month: 2,
-        day: 18
+        month: 9,
+        day: 2
     };
     config.util.extendDeep(defaultConfigs, configs);
     config.util.setModuleDefaults('xjtlu-timetable-to-ics', defaultConfigs);
